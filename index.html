@@ -1,27 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self';">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline';">
   <meta name="description" content="A simple typing speed test application">
   <title>Typing Speed Test</title>
   <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-<div class="container">
-  <h1>Typing Speed Test (1 Minute)</h1>
-  <div id="test-text">
-    Data entry requires accuracy and speed. The candidate must be able to type quickly and pay attention to detail. Mistakes should be minimized while maintaining a steady typing rhythm. This test will help determine typing proficiency and readiness for data entry work. Practice regularly to improve both speed and accuracy over time.
+  <div class="container">
+    <h1>Typing Speed Test (1 Minute)</h1>
+    <div id="test-text">
+      Data entry requires accuracy and speed. The candidate must be able to type quickly and pay attention to detail.
+      Mistakes should be minimized while maintaining a steady typing rhythm. This test will help determine typing
+      proficiency and readiness for data entry work. Practice regularly to improve both speed and accuracy over time.
+    </div>
+
+    <textarea id="input-area" placeholder="Start typing here when you're ready..." aria-label="Typing input area" oninput="startTest()"></textarea>
+    <div id="timer" role="timer">Time: 60s</div>
+    <div id="result" role="status" aria-live="polite"></div>
+    <button id="theme-toggle" aria-label="Toggle dark mode">🌙</button>
   </div>
 
-  <textarea id="input-area" placeholder="Start typing here when you're ready..." aria-label="Typing input area"></textarea>
-  <div id="timer" role="timer">Time: 60s</div>
-  <button id="startButton">Start Test</button>
-  <div id="result" role="status" aria-live="polite"></div>
-</div>
-
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
+
 </html>

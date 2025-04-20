@@ -7,16 +7,18 @@ function startTest() {
 
   const inputArea = document.getElementById('input-area');
   const resultDiv = document.getElementById('result');
-  const startButton = document.getElementById('startButton');
 
   isTestRunning = true;
   inputArea.disabled = false;
-  inputArea.value = '';
   inputArea.focus();
   timeLeft = 60;
   document.getElementById('timer').textContent = "Time: 60s";
   resultDiv.textContent = '';
-  startButton.disabled = true;
+
+  // Clear any existing timer before starting a new one
+  if (timer) {
+    clearInterval(timer);
+  }
 
   timer = setInterval(() => {
     timeLeft--;
@@ -30,11 +32,9 @@ function startTest() {
 
 function endTest() {
   const inputArea = document.getElementById('input-area');
-  const startButton = document.getElementById('startButton');
 
   clearInterval(timer);
   inputArea.disabled = true;
-  startButton.disabled = false;
   isTestRunning = false;
   showResults();
 }
@@ -60,4 +60,12 @@ window.addEventListener('unload', () => {
   if (timer) {
     clearInterval(timer);
   }
+});
+
+// Start the test when typing begins
+document.getElementById('input-area').addEventListener('input', startTest);
+
+// Add dark mode toggle functionality
+document.getElementById('theme-toggle').addEventListener('click', () => {
+  document.body.classList.toggle('dark-mode');
 });
